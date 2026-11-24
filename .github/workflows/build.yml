@@ -1,0 +1,31 @@
+name: Build Fitness Rest Timer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-15
+
+    steps:
+      - name: Download source
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build Apple Watch App
+        run: |
+          xcodebuild \
+            -project FitnessRestTimer.xcodeproj \
+            -scheme FitnessRestTimer \
+            -sdk watchsimulator \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            build
