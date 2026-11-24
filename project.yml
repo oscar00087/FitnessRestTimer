@@ -1,0 +1,19 @@
+name: FitnessRestTimer
+
+options:
+  bundleIdPrefix: com.fitnessresttimer
+  deploymentTarget:
+    watchOS: "10.0"
+
+targets:
+  FitnessRestTimer:
+    type: application
+    platform: watchOS
+    sources:
+      - path: FitnessRestTimer
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fitnessresttimer.watchkitapp
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_WKApplication: YES
+        SWIFT_VERSION: 5.0
